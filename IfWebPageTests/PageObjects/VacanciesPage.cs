@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿using IfWebPageTests.Utilities;
+using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -18,7 +19,7 @@ namespace IfWebPageTests.PageObjects
 
         public QAJobPage NavigateToQATestAutomationVacancy()
         {
-            Thread.Sleep(1000);
+            Wait.WaitUntilElementIsClickable(_webDriver, _qaVacancyLink);
             _webDriver.FindElement(_qaVacancyLink).Click();
             return new QAJobPage(_webDriver);
         }

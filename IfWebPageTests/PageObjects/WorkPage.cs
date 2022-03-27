@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿using IfWebPageTests.Utilities;
+using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -18,8 +19,8 @@ namespace IfWebPageTests.PageObjects
 
         private void NavigateToPage(string pageName)
         {
-            Thread.Sleep(1000);
-            string xpath = String.Format(_link, pageName);
+            string xpath = string.Format(_link, pageName);
+            Wait.WaitUntilElementIsClickable(_webDriver,By.XPath(xpath));
             _webDriver.FindElement(By.XPath(xpath)).Click();
         }
 

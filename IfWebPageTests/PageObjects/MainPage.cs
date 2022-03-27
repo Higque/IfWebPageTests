@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿using IfWebPageTests.Utilities;
+using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -11,6 +12,9 @@ namespace IfWebPageTests.PageObjects
         private IWebDriver _webDriver;
 
         private string _link = "//a[text()='{0}' and contains(@class,'menu-action')]";
+        private readonly By _linkA = By.XPath("//a[text()='Par If' and contains(@class,'menu-action')]");
+
+
 
         public MainPage(IWebDriver webDriver)
         {
@@ -18,8 +22,8 @@ namespace IfWebPageTests.PageObjects
         }
 
         private void NavigateToPage(string pageName){
-            string xpath = String.Format(_link, pageName);
-            Thread.Sleep(1000);
+            string xpath = string.Format(_link, pageName);
+            Wait.WaitUntilElementIsClickable(_webDriver, By.XPath(xpath));
             _webDriver.FindElement(By.XPath(xpath)).Click();
             //_webDriver.FindElement(By.XPath(xpath)).Click();
         }

@@ -23,7 +23,7 @@ namespace IfWebPageTests
         }
 
         [Test]
-        public void Test1()
+        public void VacancyHeading_IsCorrect()
         {
             var mainPage = new MainPage(driver);
             mainPage
