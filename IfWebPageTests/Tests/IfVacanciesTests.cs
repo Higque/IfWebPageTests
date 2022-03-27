@@ -8,36 +8,26 @@ using System.Threading;
 
 namespace IfWebPageTests
 {
-    public class Tests
+    [TestFixture]
+    public class IfVacanciesTests : BaseTest
     {
-        private IWebDriver driver;
+        MainPage mainPage;
 
         [SetUp]
-        public void Setup()
+        protected void SetUp()
         {
-            driver = new OpenQA.Selenium.Chrome.ChromeDriver();
-            driver.Navigate().GoToUrl("https://www.if.lv");
-            driver.Manage().Window.Maximize();
-            driver.FindElement(By.Id("onetrust-accept-btn-handler")).Click();
-            driver.FindElement(By.XPath("//a[@href='#main-navigation']")).Click();
+            mainPage = new MainPage(_webDriver);
         }
 
         [Test]
         public void VacancyHeading_IsCorrect()
         {
-            var mainPage = new MainPage(driver);
             mainPage
                 .NavigateToAboutPage()
                 .NavigateToWorkPage()
                 .NavigateToVacanciesPage()
                 .NavigateToQATestAutomationVacancy()
                 .CheckJobPageHeading();
-        }
-
-        [TearDown]
-        public void Teardown()
-        {
-            driver.Quit();
         }
     }
 }

@@ -12,9 +12,6 @@ namespace IfWebPageTests.PageObjects
         private IWebDriver _webDriver;
 
         private string _link = "//a[text()='{0}' and contains(@class,'menu-action')]";
-        private readonly By _linkA = By.XPath("//a[text()='Par If' and contains(@class,'menu-action')]");
-
-
 
         public MainPage(IWebDriver webDriver)
         {
