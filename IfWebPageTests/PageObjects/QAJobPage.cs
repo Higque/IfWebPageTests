@@ -1,10 +1,4 @@
-﻿using IfWebPageTests.Utilities;
-using NUnit.Framework;
-using OpenQA.Selenium;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading;
+﻿using OpenQA.Selenium;
 
 namespace IfWebPageTests.PageObjects
 {
@@ -19,10 +13,9 @@ namespace IfWebPageTests.PageObjects
             _webDriver = webDriver;
         }
 
-        public void CheckJobPageHeading (){
-            Wait.WaitUntilElementVisible(_webDriver, _qaJobTitleHeading);
-            string heading = _webDriver.FindElement(_qaJobTitleHeading).Text;
-            Assert.AreEqual("Quality Assurance/Test Automation Specialist", heading, "Heading is not correct!");
-       }
+        public string GetJobPageHeading()
+        {
+            return GlobalPage.GetElementText(_webDriver, _qaJobTitleHeading);
+        }
     }
 }

@@ -1,10 +1,6 @@
 using IfWebPageTests.PageObjects;
 using NUnit.Framework;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Support.UI;
-using SeleniumExtras.WaitHelpers;
-using System;
-using System.Threading;
+
 
 namespace IfWebPageTests
 {
@@ -22,12 +18,14 @@ namespace IfWebPageTests
         [Test]
         public void VacancyHeading_IsCorrect()
         {
-            mainPage
+           string heading = mainPage
                 .NavigateToAboutPage()
                 .NavigateToWorkPage()
                 .NavigateToVacanciesPage()
                 .NavigateToQATestAutomationVacancy()
-                .CheckJobPageHeading();
+                .GetJobPageHeading();
+
+            Assert.AreEqual("Quality Assurance/Test Automation Specialist", heading, "Heading is not correct!");
         }
     }
 }
